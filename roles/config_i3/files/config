@@ -176,6 +176,8 @@ exec_always xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1
 bindsym Ctrl+Alt+l exec i3lock
 exec_always feh --bg-scale /home/paul/.wallpaper
 exec_always redshift -P -O 3600
+new_window pixel 0
+exec_always xset r rate 250 50
 exec nm-applet
 exec krunner
 exec --no-startup-id dropbox start
