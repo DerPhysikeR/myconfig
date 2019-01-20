@@ -1,0 +1,31 @@
+---
+- name: 'install packages for i3 gaps'
+  pacman:
+    name: ['i3-gaps', 'arandr', 'feh', 'network-manager-applet', 'redshift', 'kitty', 'ranger', 'w3m']
+    state: present
+
+- name: "create i3 config folder if it doesn't exist"
+  file: path=/home/paul/.config/i3 state=directory
+
+- name: 'copy i3 config file from template'
+  copy:
+    src: ../files/config
+    dest: /home/paul/.config/i3/config
+    group: paul
+    owner: paul
+    mode: '644'
+    backup: yes
+
+- name: 'download wallpaper'
+  get_url:
+    url: http://hdqwalls.com/download/1/small-memory-lp-3840x2160.jpg
+    dest: /home/paul/.wallpaper
+    mode: '644'
+
+- name: "create ranger config folder if it doesn't exist"
+  file: path=/home/paul/.config/ranger state=directory
+
+- name: 'set image preview for ranger fm'
+  copy:
+    content: "set preview_images true\n"
+    dest: /home/paul/.config/ranger/rc.conf
