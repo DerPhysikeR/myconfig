@@ -184,7 +184,7 @@ exec nm-applet
 exec krunner
 exec --no-startup-id dropbox start
 
-bindsym Control+Mod1+l exec i3lock
+bindsym Control+Mod1+l exec ~/.i3/lockscreen.sh
 ## Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -5% #decrease sound volume
