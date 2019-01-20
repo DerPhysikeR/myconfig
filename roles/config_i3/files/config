@@ -181,3 +181,8 @@ exec_always xset r rate 250 50
 exec nm-applet
 exec krunner
 exec --no-startup-id dropbox start
+
+## Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 3 toggle # mute sound
