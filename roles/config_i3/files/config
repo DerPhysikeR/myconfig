@@ -56,10 +56,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -169,9 +169,13 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+# home layout
+# exec_always xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1080 --pos 0x1864 --rotate normal --output DP1 --mode 3840x2160 --pos 1920x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+# local monitor layout
+exec_always xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
 bindsym Ctrl+Alt+l exec i3lock
-exec_always redshift -P -O 3600
-exec_always nm-applet
 exec_always feh --bg-scale /home/paul/.wallpaper
-exec_always krunner
+exec_always redshift -P -O 3600
+exec nm-applet
+exec krunner
 exec --no-startup-id dropbox start
