@@ -7,7 +7,11 @@
     state: present
 
 - name: "create i3 config folder if it doesn't exist"
-  file: path=/home/paul/.config/i3 state=directory
+  file:
+    path: /home/paul/.config/i3
+    group: paul
+    owner: paul
+    state: directory
 
 - name: 'copy i3 config file from template'
   copy:
@@ -22,18 +26,32 @@
   get_url:
     url: http://hdqwalls.com/download/1/small-memory-lp-3840x2160.jpg
     dest: /home/paul/.wallpaper
+    group: paul
+    owner: paul
     mode: '644'
 
 - name: "create ranger config folder if it doesn't exist"
-  file: path=/home/paul/.config/ranger state=directory
+  file:
+    path: /home/paul/.config/ranger
+    group: paul
+    owner: paul
+    state: directory
 
 - name: 'set image preview for ranger fm'
   copy:
     content: "set preview_images true\n"
     dest: /home/paul/.config/ranger/rc.conf
+    group: paul
+    owner: paul
+    mode: '644'
+    backup: true
 
 - name: "create .i3 folder in home directory"
-  file: path=/home/paul/.i3/ state=directory
+  file:
+    path: /home/paul/.i3/
+    group: paul
+    owner: paul
+    state: directory
 
 - name: 'move i3 lock screen script to .i3'
   copy:
