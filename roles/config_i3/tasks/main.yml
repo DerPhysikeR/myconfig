@@ -2,7 +2,8 @@
 - name: 'install packages for i3 gaps'
   pacman:
     name: ['i3-gaps', 'arandr', 'i3lock', 'feh', 'network-manager-applet',
-           'redshift', 'kitty', 'ranger', 'w3m', 'i3-scrot']
+           'redshift', 'kitty', 'ranger', 'w3m', 'i3-scrot', 'i3status',
+           'dmenu']
     state: present
 
 - name: "create i3 config folder if it doesn't exist"
