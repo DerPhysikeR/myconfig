@@ -186,7 +186,6 @@ exec krunner
 exec --no-startup-id dropbox start
 exec davmail
 
-bindsym Control+Mod1+l exec ~/.i3/lockscreen.sh
 ## Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -5% #decrease sound volume
@@ -195,3 +194,17 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 3 toggle # mute s
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+
+set $mode_system System (l) lock, (s) suspend, (h) hybrid-sleep, (r) reboot, (d) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id exec ~/.i3/lockscreen.sh, mode "default"
+    bindsym s exec --no-startup-id exec ~/.i3/lockscreen.sh && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id exec ~/.i3/lockscreen.sh && systemctl hybrid-sleep, mode "default"
+    bindsym r exec --no-startup-id exec systemctl reboot, mode "default"
+    bindsym d exec --no-startup-id exec systemctl shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym Control+Mod1+l mode "$mode_system"
