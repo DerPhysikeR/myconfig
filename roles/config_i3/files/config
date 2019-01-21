@@ -183,6 +183,7 @@ exec_always xset r rate 250 50
 exec nm-applet
 exec krunner
 exec --no-startup-id dropbox start
+exec davmail
 
 bindsym Control+Mod1+l exec ~/.i3/lockscreen.sh
 ## Pulse Audio controls
